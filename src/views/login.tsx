@@ -1,11 +1,8 @@
-import ConfigurationLayout from "@/layouts/configuration";
+import ConfigurationLayout from '@/layouts/configuration'
 
-function LoginView ()  {
-  return <ConfigurationLayout>login view</ConfigurationLayout>
+function LoginView() {
+  return <ConfigurationLayout page='login'>login view</ConfigurationLayout>
 }
-LoginView.displayName = "LoginView";
+LoginView.displayName = 'LoginView'
 
-export {
-  LoginView as Component
-};
-
+export { LoginView as Component }
