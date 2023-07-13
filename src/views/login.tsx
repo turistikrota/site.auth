@@ -1,6 +1,7 @@
+import ConfigurationLayout from "@/layouts/configuration";
 
 function LoginView ()  {
-  return <>login view</>
+  return <ConfigurationLayout>login view</ConfigurationLayout>
 }
 LoginView.displayName = "LoginView";
 
