@@ -44,8 +44,8 @@ export default function CheckUserNameForm({ onNext }: Props) {
             [Config.headers.TurnstileToken]: turnstileToken,
           },
         )
-        .then(() => {
-          onNext(true, values.email)
+        .then((res) => {
+          onNext(Boolean(res?.data?.exists), values.email)
         })
         .catch((error) => {
           parseApiError({

@@ -1,7 +1,7 @@
 import { Config } from '@/config/config'
 import { Services, apiUrl } from '@/config/services'
 import { httpClient } from '@/http/client'
-import { useCheckEmailSchema } from '@/schemas/check-email.schema'
+import { useLoginSchema } from '@/schemas/login.schema'
 import Button from '@turistikrota/ui/button'
 import Input from '@turistikrota/ui/form/input'
 import { useIsSmallMobile } from '@turistikrota/ui/hooks/dom'
@@ -19,13 +19,13 @@ type Props = {
   onLogin: () => void
 }
 
-export default function CheckUserNameForm({ email, onLogin }: Props) {
+export default function LoginForm({ email, onLogin }: Props) {
   const { t, i18n } = useTranslation(['auth', 'validation'])
   const isSmallMobile = useIsSmallMobile()
   const toast = useToast()
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const { setSpin } = useContext(SpinContext)
-  const schema = useCheckEmailSchema()
+  const schema = useLoginSchema()
   const form = useFormik({
     initialValues: {
       email: email,
@@ -112,8 +112,8 @@ export default function CheckUserNameForm({ email, onLogin }: Props) {
           error={form.errors.password}
           ariaLabel={t('auth:login.password')}
           showHide
-          hideText='aa'
-          showText='ss'
+          hideText={t('auth:utils.hide')}
+          showText={t('auth:utils.show')}
         />
         <Turnstile
           siteKey={Config.turnstile.siteKey}
