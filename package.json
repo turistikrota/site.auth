@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@turistikrota/ui": "^0.1.0",
+    "axios": "^1.4.0",
     "formik": "^2.4.2",
     "i18next": "^23.2.11",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -23,6 +24,7 @@
     "react-transition-group": "^4.4.5",
     "sspin": "^1.0.8",
     "tailwindcss": "^3.3.2",
+    "turnstile-next": "^0.0.2",
     "yup": "^1.2.0"
   },
   "devDependencies": {
