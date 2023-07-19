@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 type CheckResult = [boolean, string | null]
@@ -23,4 +23,14 @@ export const useRedirectable = (): CheckResult => {
     }
   }, [searchParams])
   return [!!url, url]
+}
+
+const context = React.createContext<CheckResult>([false, null])
+
+export const RedirectableProvider = ({ children }: React.PropsWithChildren<{}>) => {
+  return <context.Provider value={useRedirectable()}>{children}</context.Provider>
+}
+
+export const useRedirectableContext = () => {
+  return React.useContext(context)
 }

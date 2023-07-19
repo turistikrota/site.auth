@@ -1,12 +1,12 @@
 import { Config } from '@/config/config'
 import { Services, apiUrl } from '@/config/services'
+import { httpClient } from '@/http/client'
 import { useCheckEmailSchema } from '@/schemas/check-email.schema'
 import Button from '@turistikrota/ui/button'
 import Input from '@turistikrota/ui/form/input'
 import { useIsSmallMobile } from '@turistikrota/ui/hooks/dom'
 import { useToast } from '@turistikrota/ui/toast'
 import { parseApiError } from '@turistikrota/ui/utils/response'
-import axios from 'axios'
 import { useFormik } from 'formik'
 import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -34,7 +34,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
     validateOnMount: false,
     validationSchema: schema,
     onSubmit: (values) => {
-      axios
+      httpClient
         .post(
           apiUrl(Services.Auth, '/checkEmail'),
           {
