@@ -49,7 +49,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
         })
         .catch((error) => {
           parseApiError({
-            error,
+            error: error?.response?.data,
             toast,
             form,
           })
