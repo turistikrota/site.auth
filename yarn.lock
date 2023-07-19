@@ -2987,10 +2987,10 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-turnstile-next@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/turnstile-next/-/turnstile-next-0.0.2.tgz#92e3b73acc95d8fdeadac34e870d7c38e3ec4100"
-  integrity sha512-DNxAPk9Cze6YMXVYyY365uhXUI5QRBUf3ItslSK7fAhrMp0sq+MQnVY5ykUBWXPpQZhV5GMovPuvfLueS092eg==
+turnstile-next@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/turnstile-next/-/turnstile-next-0.2.0.tgz#671cfb695b4ea0e66b1302ed46db66ebe4f235ac"
+  integrity sha512-8gVv/sxn10duYnSWh69bbBl0lMgdvU6rjMR3W79hOo0+6Md84vC3DxmKoRxEIni+JwB3G6AqyFEGO1LEka5T/g==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"

@@ -1,6 +1,6 @@
 import { Config } from '@/config/config'
 import { Services, apiUrl } from '@/config/services'
-import { createLoginSchema } from '@/schemas/login.schema'
+import { useCheckEmailSchema } from '@/schemas/check-email.schema'
 import Button from '@turistikrota/ui/button'
 import Input from '@turistikrota/ui/form/input'
 import { useIsSmallMobile } from '@turistikrota/ui/hooks/dom'
@@ -8,10 +8,11 @@ import { useToast } from '@turistikrota/ui/toast'
 import { parseApiError } from '@turistikrota/ui/utils/response'
 import axios from 'axios'
 import { useFormik } from 'formik'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SpinContext } from 'sspin'
 import Turnstile from 'turnstile-next'
+import { checkWidgetRender } from 'turnstile-next/utils'
 
 type Props = {
   onNext: (val: boolean, mail?: string) => void
@@ -23,6 +24,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
   const toast = useToast()
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const { setSpin } = useContext(SpinContext)
+  const schema = useCheckEmailSchema()
   const form = useFormik({
     initialValues: {
       email: '',
@@ -30,7 +32,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
     validateOnBlur: false,
     validateOnChange: false,
     validateOnMount: false,
-    validationSchema: createLoginSchema(t),
+    validationSchema: schema,
     onSubmit: (values) => {
       axios
         .post(
@@ -58,6 +60,10 @@ export default function CheckUserNameForm({ onNext }: Props) {
     },
   })
 
+  useEffect(() => {
+    checkWidgetRender()
+  }, [])
+
   const onError = () => {
     setTurnstileToken('')
   }
@@ -66,11 +72,16 @@ export default function CheckUserNameForm({ onNext }: Props) {
     setTurnstileToken(token)
   }
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    form.handleSubmit()
+  }
+
   return (
     <div>
-      <form className='space-y-4 md:space-y-6 ease-in' autoComplete='on' onSubmit={form.handleSubmit}>
+      <form className='space-y-4 md:space-y-6 ease-in' autoComplete='on' onSubmit={onSubmit}>
         <Input
-          label={t('email')}
+          label={t('auth:check.email')}
           name='email'
           id='email'
           type='email'
@@ -81,7 +92,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
           value={form.values.email}
           onBlur={form.handleBlur}
           error={form.errors.email}
-          ariaLabel={t('email')}
+          ariaLabel={t('auth:check.email')}
         />
         <Turnstile
           siteKey={Config.turnstile.siteKey}
@@ -90,7 +101,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
           onVerify={onVerify}
           size={isSmallMobile ? 'compact' : 'normal'}
         />
-        <Button htmlType='submit'>{t('button')}</Button>
+        <Button htmlType='submit'>{t('auth:check.button')}</Button>
       </form>
     </div>
   )

@@ -1,16 +1,18 @@
-import * as Yup from "yup";
+import { useTranslation } from 'react-i18next'
+import * as Yup from 'yup'
 
-export const createLoginSchema = (t: any) =>
-  Yup.object().shape({
-    email: Yup.string()
-      .email(t("validation.invalidEmail"))
-      .required(t("validation.required")),
+export const useLoginSchema = () => {
+  const { t } = useTranslation(['validation'])
+
+  return Yup.object().shape({
+    email: Yup.string().email(t('invalidEmail')).required(t('required')),
     password: Yup.string()
       .min(
         6,
-        t("validation.passwordMin", {
+        t('passwordMin', {
           min: 6,
-        })
+        }),
       )
-      .required(t("validation.required")),
-  });
+      .required(t('required')),
+  })
+}

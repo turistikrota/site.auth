@@ -15,7 +15,7 @@ type config = {
 
 export const Config: config = {
   turnstile: {
-    siteKey: import.meta.env.TURNSTILE_SITE_KEY!,
+    siteKey: import.meta.env.VITE_TURNSTILE_SITE_KEY!,
   },
   headers: {
     TurnstileToken: 'X-Turnstile-Token',
