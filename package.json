@@ -12,6 +12,7 @@
   "dependencies": {
     "@turistikrota/ui": "^0.1.0",
     "axios": "^1.4.0",
+    "boxicons": "^2.1.4",
     "formik": "^2.4.2",
     "i18next": "^23.2.11",
     "i18next-browser-languagedetector": "^7.1.0",

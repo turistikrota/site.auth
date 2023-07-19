@@ -1,5 +1,6 @@
 import '@turistikrota/ui/assets/config.css'
 import ContentLoader from '@turistikrota/ui/loader'
+import 'boxicons/css/boxicons.min.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'

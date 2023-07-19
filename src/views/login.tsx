@@ -1,3 +1,4 @@
+import { useRedirectable } from '@/hooks/redirectable'
 import ConfigurationLayout from '@/layouts/configuration'
 import Button from '@turistikrota/ui/button'
 import Condition from '@turistikrota/ui/condition'
@@ -38,11 +39,17 @@ const getActiveChain = (id: Id): ChainEl => {
 }
 
 function LoginView() {
+  const [redirectable, redirectUrl] = useRedirectable()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { t, i18n } = useTranslation(['auth'])
   const [email, setEmail] = useState<string>('')
   const [id, setId] = useState<Id>('check-username')
   const [activeChain, setActiveChain] = useState<ChainEl>(getActiveChain('check-username'))
+
+  const onLogin = () => {
+    const cb = redirectable && !!redirectUrl ? redirectUrl : 'https://turistikrota.com'
+    window.open(cb, '_self')
+  }
 
   const onNext = (id: Id, mail?: string) => {
     setId(id)
@@ -85,7 +92,7 @@ function LoginView() {
             />
           </Condition>
           <Condition value={id === 'login'}>
-            <Components.Login email={email} />
+            <Components.Login email={email} onLogin={onLogin} />
           </Condition>
           <Condition value={id === 'register'}>
             <Components.Register email={email} />
