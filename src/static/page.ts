@@ -1,4 +1,7 @@
 export type RouteType = {
+  auth: {
+    reSend: string
+  }
   contracts: {
     terms: string
     privacyNotify: string
@@ -10,6 +13,9 @@ export type Locales = 'en' | 'tr'
 
 const Routes: Record<Locales, RouteType> = {
   tr: {
+    auth: {
+      reSend: '/etkinlestir/tekrar-gonder',
+    },
     contracts: {
       terms: '/sozlesmeler/kullanim-kosullari',
       privacyNotify: '/sozlesmeler/gizlilik-bildirimi',
@@ -17,6 +23,9 @@ const Routes: Record<Locales, RouteType> = {
     },
   },
   en: {
+    auth: {
+      reSend: '/activate/re-send-code',
+    },
     contracts: {
       terms: '/contracts/terms-of-use',
       privacyNotify: '/contracts/privacy-notice',

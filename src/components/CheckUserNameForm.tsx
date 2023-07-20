@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SpinContext } from 'sspin'
 import Turnstile from 'turnstile-next'
-import { checkWidgetRender } from 'turnstile-next/utils'
+import { checkWidgetRender, refreshTurnstile } from 'turnstile-next/utils'
 
 type Props = {
   onNext: (val: boolean, mail?: string) => void
@@ -48,6 +48,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
           onNext(Boolean(res?.data?.exists), values.email)
         })
         .catch((error) => {
+          refreshTurnstile()
           parseApiError({
             error: error?.response?.data,
             toast,

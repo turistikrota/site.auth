@@ -52,6 +52,7 @@ export default function LoginForm({ email, onLogin }: Props) {
           onLogin()
         })
         .catch((error) => {
+          refreshTurnstile()
           // isVerifyRequiredForLoginResponse
           parseApiError({
             error: error?.response?.data,

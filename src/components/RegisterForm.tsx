@@ -57,7 +57,7 @@ export default function RegisterForm({ email, onRegister }: Props) {
           onRegister()
         })
         .catch((error) => {
-          // isVerifyRequiredForLoginResponse
+          refreshTurnstile()
           parseApiError({
             error: error?.response?.data,
             toast,
