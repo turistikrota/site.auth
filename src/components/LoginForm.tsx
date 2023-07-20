@@ -2,6 +2,8 @@ import { Config } from '@/config/config'
 import { Services, apiUrl } from '@/config/services'
 import { httpClient } from '@/http/client'
 import { useLoginSchema } from '@/schemas/login.schema'
+import { getStaticRoute } from '@/static/page'
+import { isVerifyRequiredForLoginResponse } from '@/types/auth'
 import Button from '@turistikrota/ui/button'
 import Input from '@turistikrota/ui/form/input'
 import { useIsSmallMobile } from '@turistikrota/ui/hooks/dom'
@@ -10,6 +12,7 @@ import { parseApiError } from '@turistikrota/ui/utils/response'
 import { useFormik } from 'formik'
 import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { SpinContext } from 'sspin'
 import Turnstile from 'turnstile-next'
 import { refreshTurnstile } from 'turnstile-next/utils'
@@ -26,6 +29,7 @@ export default function LoginForm({ email, onLogin }: Props) {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const { setSpin } = useContext(SpinContext)
   const schema = useLoginSchema()
+  const navigate = useNavigate()
   const form = useFormik({
     initialValues: {
       email: email,
@@ -53,9 +57,11 @@ export default function LoginForm({ email, onLogin }: Props) {
         })
         .catch((error) => {
           refreshTurnstile()
-          // isVerifyRequiredForLoginResponse
+          if (isVerifyRequiredForLoginResponse(error)) {
+            return navigate(`${getStaticRoute(i18n.language).auth.reSend}?email=${form.values.email}`)
+          }
           parseApiError({
-            error: error?.response?.data,
+            error: error.response.data,
             toast,
             form,
           })

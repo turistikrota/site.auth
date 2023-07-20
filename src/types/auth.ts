@@ -3,6 +3,16 @@ export type VerifyFailResponse = {
   reSendable: boolean
 }
 
-export function isVerifyFailResponse(arg: any): arg is VerifyFailResponse {
-  return arg && arg.email !== undefined && arg.reSendable !== undefined
+export type VerifyRequiredForLoginResponse = {
+  verifyRequired: boolean
+}
+
+export function isVerifyFailResponse(arg: unknown): arg is VerifyFailResponse {
+  const v = arg as VerifyFailResponse
+  return typeof v.email === 'string' && typeof v.reSendable === 'boolean'
+}
+
+export function isVerifyRequiredForLoginResponse(arg: unknown): arg is VerifyRequiredForLoginResponse {
+  const v = arg as VerifyRequiredForLoginResponse
+  return typeof v.verifyRequired === 'boolean'
 }
