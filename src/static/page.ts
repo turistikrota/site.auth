@@ -17,9 +17,9 @@ const Routes: Record<Locales, RouteType> = {
       reSend: '/etkinlestir/tekrar-gonder',
     },
     contracts: {
-      terms: '/sozlesmeler/kullanim-kosullari',
-      privacyNotify: '/sozlesmeler/gizlilik-bildirimi',
-      privacy: '/sozlesmeler/kisisel-verilerin-korunmasi-ve-gizlilik-politikasi',
+      terms: 'https://turistikrota.com/sozlesmeler/kullanim-kosullari',
+      privacyNotify: 'https://turistikrota.com/sozlesmeler/gizlilik-bildirimi',
+      privacy: 'https://turistikrota.com/sozlesmeler/kisisel-verilerin-korunmasi-ve-gizlilik-politikasi',
     },
   },
   en: {
@@ -27,9 +27,9 @@ const Routes: Record<Locales, RouteType> = {
       reSend: '/activate/re-send-code',
     },
     contracts: {
-      terms: '/contracts/terms-of-use',
-      privacyNotify: '/contracts/privacy-notice',
-      privacy: '/contracts/privacy-and-protection-of-personal-data',
+      terms: 'https://turistikrota.com/contracts/terms-of-use',
+      privacyNotify: 'https://turistikrota.com/contracts/privacy-notice',
+      privacy: 'https://turistikrota.com/contracts/privacy-and-protection-of-personal-data',
     },
   },
 }
