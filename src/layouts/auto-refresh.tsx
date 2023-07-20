@@ -19,7 +19,7 @@ const AutoRefreshAccessLayout: React.FC<React.PropsWithChildren> = ({ children }
         }
       })
       .catch((err) => {
-        if (err?.response?.data?.isExpired) {
+        if (err?.response?.data?.isExpire) {
           httpClient
             .put(apiUrl(Services.Auth, '/refresh'), {}, { withCredentials: true })
             .then((res) => {

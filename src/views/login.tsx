@@ -42,14 +42,18 @@ const getActiveChain = (id: Id): ChainEl => {
 
 function LoginView() {
   const [redirectable, redirectUrl] = useRedirectableContext()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const { t, i18n } = useTranslation(['auth'])
+  const { t } = useTranslation(['auth'])
   const [email, setEmail] = useState<string>('')
   const [id, setId] = useState<Id>('check-username')
   const [activeChain, setActiveChain] = useState<ChainEl>(getActiveChain('check-username'))
 
   const onLogin = () => {
     openRedirectUrl(redirectable, redirectUrl)
+  }
+
+  const onRegister = () => {
+    setId('login')
+    setActiveChain(getActiveChain('login'))
   }
 
   const onNext = (id: Id, mail?: string) => {
@@ -70,7 +74,7 @@ function LoginView() {
     <RedirectableProvider>
       <AutoRefreshAccessLayout>
         <ConfigurationLayout page='login'>
-          <Spin.WithContext value={isLoading}>
+          <Spin.WithContext value={false}>
             <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
               <div className='flex items-center'>
                 <Condition value={['login', 'register'].includes(id)}>
@@ -98,7 +102,7 @@ function LoginView() {
                 <Components.Login email={email} onLogin={onLogin} />
               </Condition>
               <Condition value={id === 'register'}>
-                <Components.Register email={email} />
+                <Components.Register email={email} onRegister={onRegister} />
               </Condition>
             </div>
           </Spin.WithContext>

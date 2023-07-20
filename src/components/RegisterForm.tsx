@@ -19,10 +19,10 @@ import { refreshTurnstile } from 'turnstile-next/utils'
 
 type Props = {
   email: string
-  onLogin: () => void
+  onRegister: () => void
 }
 
-export default function RegisterForm({ email, onLogin }: Props) {
+export default function RegisterForm({ email, onRegister }: Props) {
   const { t, i18n } = useTranslation(['auth', 'validation'])
   const isSmallMobile = useIsSmallMobile()
   const toast = useToast()
@@ -42,18 +42,19 @@ export default function RegisterForm({ email, onLogin }: Props) {
     onSubmit: (values) => {
       httpClient
         .post(
-          apiUrl(Services.Auth, '/login'),
+          apiUrl(Services.Auth, '/register'),
           {
             email: values.email,
             password: values.password,
+            privacy: values.privacy,
           },
           {
             [Config.headers.TurnstileToken]: turnstileToken,
           },
         )
         .then(() => {
-          // check 2fa
-          onLogin()
+          toast.success(t('auth:register.success'))
+          onRegister()
         })
         .catch((error) => {
           // isVerifyRequiredForLoginResponse
