@@ -1,5 +1,6 @@
 import Logo from '@/components/Logo'
 import { ToastListProvider, ToastProvider } from '@turistikrota/ui/toast'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 

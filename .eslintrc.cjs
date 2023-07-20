@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     '@typescript-eslint/no-non-null-assertion': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   ignorePatterns: ['tailwind.config.js', 'postcss.config.js', '.eslintrc.cjs', 'vite.config.ts', 'index.html'],
 }
