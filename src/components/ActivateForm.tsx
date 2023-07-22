@@ -44,7 +44,9 @@ export default function ActivateForm() {
         apiUrl(Services.Auth, `/${params.code}`),
         {},
         {
-          [Config.headers.TurnstileToken]: turnstileToken,
+          headers: {
+            [Config.headers.TurnstileToken]: turnstileToken,
+          },
         },
       )
       .then((res) => {
@@ -64,7 +66,9 @@ export default function ActivateForm() {
           toast,
           form: {
             setFieldError: (key: string, msg: string) => toast.error(key + ' : ' + msg),
-            setSubmitting: () => {},
+            setSubmitting: () => {
+              /* do nothing */
+            },
           },
         })
       })

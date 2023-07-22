@@ -42,7 +42,9 @@ export default function ReSendVerifyForm() {
             email: values.email,
           },
           {
-            [Config.headers.TurnstileToken]: turnstileToken,
+            headers: {
+              [Config.headers.TurnstileToken]: turnstileToken,
+            },
           },
         )
         .then((res) => {

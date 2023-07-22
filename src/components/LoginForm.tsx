@@ -48,7 +48,9 @@ export default function LoginForm({ email, onLogin }: Props) {
             password: values.password,
           },
           {
-            [Config.headers.TurnstileToken]: turnstileToken,
+            headers: {
+              [Config.headers.TurnstileToken]: turnstileToken,
+            },
           },
         )
         .then(() => {

@@ -49,7 +49,9 @@ export default function RegisterForm({ email, onRegister }: Props) {
             privacy: values.privacy,
           },
           {
-            [Config.headers.TurnstileToken]: turnstileToken,
+            headers: {
+              [Config.headers.TurnstileToken]: turnstileToken,
+            },
           },
         )
         .then(() => {
