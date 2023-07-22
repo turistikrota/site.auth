@@ -1,13 +1,13 @@
 import { Services, apiUrl } from '@/config/services'
-import { useRedirectableContext } from '@/hooks/redirectable'
 import { httpClient } from '@/http/client'
 import { openRedirectUrl } from '@/utils/on-login'
 import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Spinner } from 'sspin'
 
 const AutoRefreshAccessLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [redirectable, redirectUrl] = useRedirectableContext()
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [searchParams] = useSearchParams()
   useEffect(() => {
     httpClient
       .get(apiUrl(Services.Auth, '/'), {
@@ -15,7 +15,7 @@ const AutoRefreshAccessLayout: React.FC<React.PropsWithChildren> = ({ children }
       })
       .then((res) => {
         if (res.status === 200) {
-          openRedirectUrl(redirectable, redirectUrl)
+          openRedirectUrl(searchParams.get('redirect'))
         }
       })
       .catch((err) => {
@@ -24,7 +24,7 @@ const AutoRefreshAccessLayout: React.FC<React.PropsWithChildren> = ({ children }
             .put(apiUrl(Services.Auth, '/refresh'), {}, { withCredentials: true })
             .then((res) => {
               if (res.status === 200) {
-                openRedirectUrl(redirectable, redirectUrl)
+                openRedirectUrl(searchParams.get('redirect'))
               }
             })
             .catch(() => {
