@@ -24,6 +24,9 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'eslint@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
   },
   ignorePatterns: ['tailwind.config.js', 'postcss.config.js', '.eslintrc.cjs', 'vite.config.ts', 'index.html'],
 }
