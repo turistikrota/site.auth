@@ -1,4 +1,5 @@
 import '@turistikrota/ui/assets/config.css'
+import '@turistikrota/ui/fonts/verdana.css'
 import ContentLoader from '@turistikrota/ui/loader'
 import 'boxicons/css/boxicons.min.css'
 import React from 'react'

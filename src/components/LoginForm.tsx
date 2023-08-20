@@ -59,7 +59,7 @@ export default function LoginForm({ email, onLogin }: Props) {
         })
         .catch((error) => {
           refreshTurnstile()
-          if (isVerifyRequiredForLoginResponse(error)) {
+          if (isVerifyRequiredForLoginResponse(error?.response?.data)) {
             return navigate(`${getStaticRoute(i18n.language).auth.reSend}?email=${form.values.email}`)
           }
           parseApiError({
