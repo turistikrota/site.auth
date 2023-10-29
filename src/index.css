@@ -14,7 +14,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: var(--background-url) var(--default-background);
+  background: var(--default-background);
   height: 100vh;
 }
 
