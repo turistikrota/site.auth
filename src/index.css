@@ -14,7 +14,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: var(--default-background);
+  background: linear-gradient(90deg, var(--default-background), var(--header-background-color));
   height: 100vh;
 }
 
