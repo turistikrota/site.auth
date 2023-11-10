@@ -1,4 +1,4 @@
-import Glass from '@/components/design/Glass'
+import GlassEffect from '@turistikrota/ui/design/glass'
 import Logo from '@turistikrota/ui/logo'
 import { ToastListProvider, ToastProvider } from '@turistikrota/ui/toast'
 import React from 'react'
@@ -25,7 +25,7 @@ export default function ConfigurationLayout({ children, page }: React.PropsWithC
             <Link to={`https://turistikrota.com/${i18n.language}`} target='_blank' className='flex items-center mb-6'>
               <Logo />
             </Link>
-            <Glass />
+            <GlassEffect.Fixed />
             <div className='w-full bg-second shadow-lg rounded-lg md:mt-0 sm:max-w-md xl:p-0'>{children}</div>
           </div>
         </section>
