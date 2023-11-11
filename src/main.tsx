@@ -15,7 +15,7 @@ import { router } from './router/router'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary fallback={<ServerError />}>
-      <RouterProvider router={router} fallbackElement={<ContentLoader />} />
+      <RouterProvider router={router} fallbackElement={<ContentLoader noMargin />} />
     </ErrorBoundary>
   </React.StrictMode>,
 )
