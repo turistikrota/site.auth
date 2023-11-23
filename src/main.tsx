@@ -1,4 +1,7 @@
 import '@turistikrota/ui/assets/config.css'
+import '@turistikrota/ui/assets/default.css'
+import CubeEffect from '@turistikrota/ui/design/cube'
+import GlassEffect from '@turistikrota/ui/design/glass'
 import '@turistikrota/ui/fonts/verdana.css'
 import ContentLoader from '@turistikrota/ui/loader'
 import 'boxicons/css/boxicons.min.css'
@@ -15,6 +18,8 @@ import { router } from './router/router'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary fallback={<ServerError />}>
+      <CubeEffect.All />
+      <GlassEffect.Fixed />
       <RouterProvider router={router} fallbackElement={<ContentLoader noMargin />} />
     </ErrorBoundary>
   </React.StrictMode>,

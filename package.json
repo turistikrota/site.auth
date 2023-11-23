@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@turistikrota/ui": "^0.4.4",
+    "@turistikrota/ui": "^0.7.7",
     "axios": "^1.4.0",
     "boxicons": "^2.1.4",
     "formik": "^2.4.2",
