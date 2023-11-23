@@ -1,4 +1,3 @@
-import Card from '@turistikrota/ui/cards/default'
 import Logo from '@turistikrota/ui/logo'
 import { ToastListProvider, ToastProvider } from '@turistikrota/ui/toast'
 import React from 'react'
@@ -21,13 +20,13 @@ export default function ConfigurationLayout({ children, page }: React.PropsWithC
     <ToastListProvider>
       <ToastProvider>
         <section className='h-full'>
-          <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto h-full lg:py-0 relative'>
+          <div className='flex flex-col items-center justify-center px-4 mx-auto h-full lg:py-0 relative'>
             <Link to={`https://turistikrota.com/${i18n.language}`} target='_blank' className='flex items-center mb-6'>
               <Logo />
             </Link>
-            <Card className='w-full shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none md:mt-0 sm:max-w-md xl:p-0'>
+            <div className='w-full bg-second shadow-sm hover:shadow-md transition-shadow duration-200 rounded-md md:mt-0 sm:max-w-md xl:p-0'>
               {children}
-            </Card>
+            </div>
           </div>
         </section>
       </ToastProvider>
