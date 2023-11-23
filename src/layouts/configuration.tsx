@@ -25,7 +25,9 @@ export default function ConfigurationLayout({ children, page }: React.PropsWithC
             <Link to={`https://turistikrota.com/${i18n.language}`} target='_blank' className='flex items-center mb-6'>
               <Logo />
             </Link>
-            <Card className='w-full shadow-lg bg-second rounded-lg md:mt-0 sm:max-w-md xl:p-0'>{children}</Card>
+            <Card className='w-full shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none md:mt-0 sm:max-w-md xl:p-0'>
+              {children}
+            </Card>
           </div>
         </section>
       </ToastProvider>
