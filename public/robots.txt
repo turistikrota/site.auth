@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://auth.turistikrota.com/sitemap.xml
