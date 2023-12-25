@@ -90,7 +90,7 @@ export default function ReSendVerifyForm() {
 
   return (
     <Spin loading={isLoading}>
-      <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
+      <div className='p-4 space-y-4 md:space-y-4 sm:p-4'>
         <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
           {t('auth:reSend.title')}
         </h1>

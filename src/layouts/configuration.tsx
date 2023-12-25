@@ -20,13 +20,11 @@ export default function ConfigurationLayout({ children, page }: React.PropsWithC
     <ToastListProvider>
       <ToastProvider>
         <section className='h-full'>
-          <div className='flex flex-col items-center justify-center px-4 mx-auto h-full lg:py-0 relative'>
-            <Link to={`https://turistikrota.com/${i18n.language}`} target='_blank' className='flex items-center mb-6'>
+          <div className='flex flex-col items-center justify-center px-2 mx-auto h-full lg:py-0 relative'>
+            <Link to={`https://turistikrota.com/${i18n.language}`} target='_blank' className='flex items-center mb-2'>
               <Logo />
             </Link>
-            <div className='w-full bg-second shadow-sm hover:shadow-md transition-shadow duration-200 rounded-md md:mt-0 sm:max-w-md xl:p-0'>
-              {children}
-            </div>
+            <div className='w-full border rounded-md md:mt-0 sm:max-w-md xl:p-0'>{children}</div>
           </div>
         </section>
       </ToastProvider>
