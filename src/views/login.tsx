@@ -74,7 +74,7 @@ function LoginView() {
     <AutoRefreshAccessLayout>
       <ConfigurationLayout page='login'>
         <Spin.WithContext value={false}>
-          <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
+          <div className='p-4 space-y-4 md:space-y-4 sm:p-4'>
             <div className='flex items-center'>
               <Condition value={['login', 'register'].includes(id)}>
                 <Button

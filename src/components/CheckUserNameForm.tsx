@@ -82,7 +82,7 @@ export default function CheckUserNameForm({ onNext }: Props) {
 
   return (
     <div>
-      <form className='space-y-4 md:space-y-6 ease-in' autoComplete='on' onSubmit={onSubmit}>
+      <form className='space-y-2 md:space-y-4 ease-in' autoComplete='on' onSubmit={onSubmit}>
         <Input
           label={t('auth:check.email')}
           name='email'
