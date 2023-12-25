@@ -7,9 +7,9 @@ export const getCurrentServeLocale = (): Locales | null => {
   if (import.meta.env.PROD) {
     const hostname = window.location.hostname
     if (hostname.includes(trSubdomain)) {
-      return 'tr'
+      return Locales.tr as Locales
     } else if (hostname.includes(enSubdomain)) {
-      return 'en'
+      return Locales.en as Locales
     }
   } else {
     return null
